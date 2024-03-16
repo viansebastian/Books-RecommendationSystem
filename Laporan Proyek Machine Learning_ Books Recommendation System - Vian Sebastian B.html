@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Laporan Proyek Machine Learning_ Books Recommendation System - Vian Sebastian B.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="laporan-proyek-machine-learning-books-recommendation-system---vian-sebastian-bromokusumo"><em><strong>Laporan Proyek Machine Learning: Books Recommendation System - Vian Sebastian Bromokusumo</strong></em></h1>
+<h2 id="project-overview"><em><strong>Project Overview</strong></em></h2>
+<p><strong>Latar Belakang</strong></p>
+<p>Menurut survei oleh Badan Pusat Statistik Indonesia yang dipublikasikan pada 7 Juni 2023, jumlah populasi Indonesia adalah sebesar 278,696 juta <a href="https://www.bps.go.id/id/statistics-table/2/MTk3NSMy/jumlah-penduduk-pertengahan-tahun--ribu-jiwa-.html">[1]</a>. Namun sangat disayangkan, menurut survei UNESCO <a href="https://uis.unesco.org/en/country/id">[2]</a>, hanya sekitar 0.001% dari masyarakat Indonesia yang memiliki minat membaca. Hal ini tentunya sangat berpengaruh terhadap tingkat literasi Indonesia, dimana menurut Balai Bahasa Provinsi Sumatera Utara <a href="https://balaibahasasumut.kemdikbud.go.id/2023/09/07/manca-untuk-literasi-yang-menyenangkan/#:~:text=Dengan%20kata%20lain%2C%20Indonesia%20masuk,2022%20mencapai%2051%2C69%25.">[3]</a>, Indonesia masuk dalam 10 negara dengan tingkat literasi terendah. Maka dari itu, diperlukan strategi yang efektif dan efisien untuk meningkatkan minta membaca masyarakat Indonesia, dengan harapan meningkatkan tingkat literasi secara keseluruhan.</p>
+<p>Proyek ini difokuskan pada dataset &quot;Book Recommendation Dataset&quot; dengan tujuan untuk menghasilkan suatu Recommendation System yang dapat merekomendasikan buku yang relevan kepada user. Dalam implementasi lanjutannya, harapannya Recommendation System ini dapat memberikan rekomendasi mulai dari literasi ilmiah, buku-buku hiburan, hingga barang-barang dalam bisnis e-commerce dan film-film dalam bisnis perfilman. Jumlah data yang sangat besar dalam dataset ini menjadi salah satu alasan Penulis menggunakan dataset ini, dikarenakan dataset yang besar akan membantu model untuk membangun sistem rekomendasi yang lebih baik dan custom bagi user.</p>
+<p>Menurut Jepchumba dari Microsoft <a href="https://techcommunity.microsoft.com/t5/educator-developer-blog/getting-started-with-using-visual-machine-learning-tools-for/ba-p/3578397">[4]</a>, <em>machine learning</em> merupakan teknik yang menggunakan matematika tingkat tinggi dan ilmu statistika untuk mengenali pola pada data yang tidak ada secara eksplisit, dan dapat memprediksi sesuai dengan hasil pola tersebut. Terdapat dua metode yang banyak digunakan dalam domain sistem rekomendasi ini, antara lain Content Based Filtering, dan Collaborative Filtering.</p>
+<p>Menurut Google Machine Learning Developers, Content Based Filtering <a href="https://developers.google.com/machine-learning/recommendation/content-based/basics">[5]</a> merupakan teknik mendapatkan rekomendasi item berdasarkan items yang disukai user, dengan cara menghitung Cosine Similarity antar items. Hal ini tentu sangat berat dalam komputasinya, mengingat dalam kasus nyata, akan ada ribuan hingga jutaan items yang perlu dikaji untuk user. Ditambah lagi, menurut sumber yang sama, Collaborative Filtering <a href="https://developers.google.com/machine-learning/recommendation/collaborative/basics">[6]</a> merupakan teknik yang mengkaji bukan hanya items yang disukai user, namun komunitas user itu sendiri untuk menghasilkan rekomendasi yang lebih baik. Hal ini tentunya membutuhkan komputasi yang lebih rumit lagi, menggunakan Deep Learning seperti Neural Network. Alhasil, dalam membangun Recommendation System, diperlukan Machine Learning untuk mempercepat dan menghasilkan rekomendasi yang efektif bagi user dan sasaran lainnya.</p>
+<p>Proyek ini menjadi sarana kecil untuk membantu meningkatkan minat membaca dan literasi Indonesia, dan hasil dari proyek ini diharapkan dapat membantu Pemerintah, instansi literatur, hingga individual untuk mengembangkan minat membaca dan edukasi literasi.</p>
+<h2 id="business-understanding"><em><strong>Business Understanding</strong></em></h2>
+<p>Stakeholder dan sasaran:</p>
+<ol>
+<li>
+<p>Pemerintah
+Sebagai organisasi tingkat tertinggi dalam negara, tentunya pemerintah dapat menggunakan Recommendation System untuk meningkatkan minta baca masyarakat. Dengan strategi lainnya yang dapat digunakan oleh pemerintah, sistem rekomendasi yang baik diharapkan dapat mendukung strategi pemerintah dalam meningkatkan minat baca dan literasi Indonesia.</p>
+</li>
+<li>
+<p>Perpustakaan
+Sebagai instansi literatur paling tua di dunia, tentunya perpustakaan-perpustakaan menyimpan ilmu-ilmu yang sudah ada sejak lama. Recommendation System yang baik akan membantu perpustakaan untuk melayani pendatang dan pembaca yang datang untuk mencari berbagai referensi dan literatur lainnya dengan lebih baik.</p>
+</li>
+<li>
+<p>Mesin Pencari
+Bukan hanya perpustakaan, Mesin Pencari seperti Google Scholar sudah menjadi gudang literasi penelitian bagi para ilmuwan dan pelajar yang ingin meningkatkan ilmunya dalam bidang tertentu. Recommendation System yang baik akan membantu pembaca untuk lebih mudah mencari informasi yang berhubungan, guna meningkatkan literasinya dalam ilmu yang didalami.</p>
+</li>
+<li>
+<p>Individu
+Dalam konteks individu, tentunya Recommendation System tidak hanya berguna dalam konteks mencari ilmu, namun juga dapat berguna untuk membantu pembaca-pembaca mencari hiburan seperti buku fiksi dan genre-genre lainnya. Harapannya, output proyek ini dapat mendukung kemajuan literasi per individu.</p>
+</li>
+</ol>
+<p><strong>Problem Statements</strong></p>
+<ol>
+<li>Dengan banyaknya jumlah buku dan genre, apakah Recommendation System yang tepat sasaran (efektif) dapat dibuat?</li>
+</ol>
+<p><strong>Recommendation System Goals</strong></p>
+<ol>
+<li>Membuat Recommendation System yang efektif dan tepat sasaran, guna membantu sasaran (perpustakaan, mesin pencari, maupun individu).</li>
+</ol>
+<p><strong>Solution Statements (Metodologi)</strong></p>
+<ol>
+<li>
+<p>Melakukan Exploratory Data Analysis untuk mendapatkan informasi berguna dalam data dan mengetahui dinamika fitur-fitur.</p>
+</li>
+<li>
+<p>Membuat model machine learning yang dapat merekomendasikan buku dengan tepat sasaran, menggunakan metode Content Based Filtering dan Collaborative Filtering.</p>
+</li>
+<li>
+<p>Menggunakan metrik evaluasi Precision@k dan Root Mean Squared Error untuk mengevaluasi performa model.</p>
+</li>
+</ol>
+<h2 id="data-understanding"><em><strong>Data Understanding</strong></em></h2>
+<p>Dataset: https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset/data</p>
+<p><em><strong>Dataset Overview</strong></em></p>
+<p>Dataset Book Recommendation ini terbagi menjadi tiga dataset, antara lain Books, Ratings, dan Users, dengan deskripsi sebagai berikut.</p>
+<p>Books:</p>
+<ol>
+<li>ISBN                 (object) : kode identifikasi unik buku</li>
+<li>Book-Title           (object) : judul buku</li>
+<li>Book-Author          (object) : penulis buku</li>
+<li>Year-Of-Publication  (object) : tahun terbit</li>
+<li>Publisher            (object) : penerbit</li>
+<li>Image-URL-S          (object) : tautan gambar kecil buku</li>
+<li>Image-URL-M          (object) : tautan gambar sedang buku</li>
+<li>Image-URL-L          (object) : tautan gambar besar buku</li>
+</ol>
+<p>Ratings:</p>
+<ol>
+<li>User-ID      (int64)  : ID user yang memberikan rating</li>
+<li>ISBN         (object) : ISBN buku yang di rating</li>
+<li>Book-Rating  (int64)  : rating buku</li>
+</ol>
+<p>Users:</p>
+<ol>
+<li>User-ID   (int64)   : ID user yang terdaftar</li>
+<li>Location  (object)  : lokasi domisili user</li>
+<li>Age       (float64) : umur dari user</li>
+</ol>
+<p>Deskripsi rinci dari dataset ini adalah sebagai berikut</p>
+<ol>
+<li>Terdapat 271,360 sampel Books data, dengan 8 fitur object.</li>
+<li>Terdapat 1,149,780 sampel Ratings data, dengan 2 fitur numerik dan 1 fitur object.</li>
+<li>Terdapat 278,858 sampel Users data, dengan 2 fitur numerik dan 1 fitur object.</li>
+<li>Terdapat 6 missing values pada Books data, dan tidak ada missing values pada Ratings data.</li>
+<li>Terdapat 110,762 missing values pada kolom 'Age' pada User data. Namun umur tidak akan terlalu dipertimbangkan dalam proyek ini.</li>
+</ol>
+<h2 id="eda---univariate-analysis"><em><strong>EDA - Univariate Analysis</strong></em></h2>
+<p><em>Beberapa hasil dari Univariate Analysis pada data ratings, users, dan books adalah sebagai berikut.</em></p>
+<ol>
+<li>dari total user yang terdaftar (278,853 users), hanya 105,283 user yang melakukan rating</li>
+<li>dari total buku yang terdaftar (271,360 buku), terdapat 340,556 buku yang diberikan rating. Hal ini dapat disebabkan oleh buku yang tidak terdaftar pada data Books, namun ada di ratings.</li>
+<li>terdapat 102,024 penulis yang terdaftar.</li>
+<li>rating terdiri dari skala 1-10.</li>
+<li>Terdapat perbedaan jumlah buku (ISBN) dan judul. Hal ini dapat disebabkan oleh judul yang sama, namun berbeda versi.</li>
+</ol>
+<p>Data-data tersebut dapat dilihat lebih rinci pada beberapa output di bawah ini.</p>
+<ol>
+<li>
+<p>Output dari Ratings data:</p>
+<ul>
+<li>rating users: 105283</li>
+<li>rated books: 340556</li>
+<li>rating range: [ 0  5  3  6  8  7 10  9  4  1  2]</li>
+</ul>
+</li>
+<li>
+<p>Output dari Books data:</p>
+<ul>
+<li>registered books: 271360</li>
+<li>registered authors: 102024</li>
+<li>registered titles: 242135</li>
+</ul>
+</li>
+<li>
+<p>Output dari Users data:</p>
+<ul>
+<li>registered users: 278858</li>
+</ul>
+</li>
+</ol>
+<h2 id="data-preparation"><em><strong>Data Preparation</strong></em></h2>
+<p>Secara berurutan, proses Data Preparation yang akan dilakukan adalah</p>
+<ol>
+<li>
+<p><em>Data Merging</em></p>
+<p>Data Merging merupakan prosedur umum dalam proses data Preparation, dimana dalam proyek ini bertujuan untuk menggabungkan data Ratings dengan data Books, untuk mempermudah proses data Cleaning, dan membantu model dalam pengolahan data nantinya.</p>
+</li>
+<li>
+<p><em>Missing Values Handling</em></p>
+<p>Missing Values Handling merupakan prosedur standar Data Cleaning, bertujuan untuk menghilangkan data kosong. Hal ini perlu dilakukan karena data yang kosong berpotensi sangat besar untuk mengacaukan kalkulasi, baik kalkulasi neural-network (deep learning) atau matematis dan stastik.</p>
+</li>
+<li>
+<p><em>Duplicates Data Handling</em></p>
+<p>Duplicates Data Handling juga merupakan prosedur standar dari Data Cleaning. Mengingat bahwa data yang dimiliki sudah sangat besar, penting untuk menghilangkan data-data duplikat untuk mengurangi jumlah data yang tidak terlalu berguna. Data Duplikat pada hakikatnya dapat meningkatkan potensi overfitting.</p>
+</li>
+<li>
+<p><em>Data Selection</em></p>
+<p>Data Selection dalam kasus proyek ini ialah memilih jumlah sampel data yang ingin digunakan, kemudian memilah kolom yang ingin digunakan dan memasukannya ke dalam satu DataFrame baru.</p>
+</li>
+</ol>
+<p>Berikut adalah alur dari proyek sesuai dengan penjelasan tahap-tahap di atas.</p>
+<ol>
+<li>
+<p><em>Data Merging</em></p>
+<p>Input dari tahap ini adalah 3 data besar, antara lain Books, Ratings, dan Users. Merge dilakukan pada data Ratings dan Books pada fitur ISBN.</p>
+</li>
+<li>
+<p><em>Missing Values Handling</em></p>
+<p>Setelah proses Merge, terdapat rata-rata 118,640 missing values pada kolom Book-Title, Book-Author, Year-Of-Publication, Publisher, Image-URL-S, Image-URL-M, dan Image-URL-L. Pada tahap ini pula, data total dari hasil Merge adalah sebanyak 1,149,780 sampel data. Dengan melimpahnya data ini, metode Missing Values Handling yang dilakukan Penulis adalah metode Drop. Hasilnya adalah 1,031,129 sampel data yang tidak memiliki nilai Null.</p>
+</li>
+<li>
+<p><em>Duplicates Data Handling</em></p>
+<p>Tahap berikutnya adalah Duplicates Data Handling, dimana Penulis melakukan pengecekan pada kolom 'ISBN' dan 'Book-Titles'. Hasilnya adalah terdapat 760,984 nilai duplikat pada kolom 'ISBN', dan 790,063 nilai duplikat pada kolom 'Book-Title'. Menghilangkan duplikat ini penting, untuk mengurangi potensi overfitting, terutama ketika menggunakan Content Based Filtering, data yang duplikat akan memiliki similarity yang sama, sehingga akan direkomendasikan buku yang tidak sesuai.</p>
+</li>
+<li>
+<p><em>Data Selection</em></p>
+<p>Data Selection dalam kasus proyek ini akan mengambil  30,000 sampel dari total data bersih 241,066 sampel, kemudian memilah fitur yang diinginkan ke sebuah DataFrame baru. Angka 30,000 sampel diambil dikarenakan beban komputasi yang berat. Pada saat proses training, Penulis menemukan beberapa kasus <em>crash</em> pada Google Collab, disebabkan oleh dataset yang digunakan terlalu besar. Setelah beberapa percobaan, 30,000 sampel menjadi jumlah data maksimum yang dapat digunakan yang tidak menyebabkan <em>crash</em>.</p>
+</li>
+</ol>
+<h3 id="data-preparation---collaborative-filtering"><em><strong>Data Preparation - Collaborative Filtering</strong></em></h3>
+<hr>
+<ol>
+<li>
+<p><em>Encoding and Mapping</em></p>
+<p>Encoding dan Mapping adalah proses untuk mengubah data object menjadi numerik. Hal ini penting dilakukan untuk mempermudah model mengolah data. Mapping dilakukan untuk menambah data yang di sudah di-encoded kembali ke DataFrame.</p>
+</li>
+<li>
+<p><em>Fetching Random Samples</em></p>
+<p>Fetching Random Samples pada proyek ini dilakukan agar distribusi data menjadi random. Hal ini baik dilakukan untuk mencegah terjadinya overfitting pada model.</p>
+</li>
+<li>
+<p><em>Train Test Split</em></p>
+<p>Prosedur standar dalam banyak proyek Machine Learning, Train Test Split adalah proses membagi data menjadi data Train (latih), dan Test (uji), dimana Train untuk latihan model, dan Test untuk uji model.</p>
+</li>
+</ol>
+<p>Berikut adalah alur dari proyek sesuai dengan penjelasan tahap-tahap di atas.</p>
+<ol>
+<li>
+<p><em>Encoding and Mapping</em></p>
+<p>Pada proses ini, Encoding dilakukan pada kolom 'User-ID' dan 'Book-Title', dimana Mapping dilakukan pada kolom baru 'user' dan 'books'. Penulis menggunakan 'Book-Title' sebagai fitur yang di-encode karena rekomendasi yang ingin dilakukan berdasarkan judul buku nantinya.</p>
+</li>
+<li>
+<p><em>Fetching Random Samples</em></p>
+<p>Proses pengambilan sampel random dilakukan dengan menggunakan fungsi sample(), dengan parameter:</p>
+<ul>
+<li>frac = 1
+merupakan parameter yang mengatur berapa persen (fraction) dari baris yang ingin digunakan. frac = 1 berarti kita ingin mengambil seluruh baris dari DataFrame.</li>
+<li>random_state = 123
+dimana random_state merupakan parameter yang mengatur reproduktifitas agar data yang diacak konsisten.</li>
+</ul>
+</li>
+<li>
+<p><em>Train Test Split</em></p>
+<p>Pada proyek kali ini, nilai x diambil dari kolom 'user' dan 'books', dan y diambil dari kolom 'Book-Rating'. Pembagian data Train dan Test dilakukan sebesar 0.8, atau 80% data Train dan 20% data Test.</p>
+</li>
+</ol>
+<h2 id="model-development---content-based-filtering"><em><strong>Model Development -  Content Based Filtering</strong></em></h2>
+<p>Tahap-tahap yang akan dilakukan Penulis pada Content Based Filtering adalah sebagai berikut:</p>
+<ol>
+<li>
+<p><em>Vectorizer Calculations</em></p>
+<p>Pada tahap ini, Penulis mengimpor TfidVectorizer, dan menggunakan metode TF-IDF (Term Frequency-Inverse Document Frequency) untuk menghitung kepentingan kata-kata dalam dokumen. Proses ini bertujuan untuk melakukan scaling dan normalisasi dengan membagi jumlah kemunculan kata-kata terhadap panjang dokumen.
+Tahap-tahap yang dilakukan adalah sebagai berikut:
+- memanggil TfidVectorizer.
+- memanggil fungsi fit().
+- memanggil fungsi get_features_name_out().
+- mentransformasikan data yang telah di fit() ke matrix, dengan memanggil fit_transform().
+- memasukkan matrix ke dalam DataFrame, dengan memanggil fungsi todense().</p>
+</li>
+<li>
+<p><em>Cosine Similarity Calculations</em></p>
+<p>Cosine Similarity merupakan teknik untuk menghitung kesamaan antar dua vektor, dengan cara menghitung sudut cosinus dan dot product antar dua vektor. Semakin kecil sudut cosinusnya, semakin besar nilai Cosine Similarity-nya. Cosine Similarity merupakan teknik yang sangat sering digunakan untuk mengukur kesamaan dalam analisis teks.</p>
+<p>Pada tahap ini, cukup mudah dilakukan, hanya dengan mengimpor cosine_similarity, dan memanggil cosine_similarity() pada matriks hasil TF-IDF.</p>
+</li>
+<li>
+<p><em>Recommendation Retrieval Function Initialization</em></p>
+<p>Pada tahap ini, dibuat fungsi book_recommendations() yang mengambil parameter judul buku (Titles), similarity_data (sim_df), items, dan k.</p>
+<p>Titles merupakan input yang dimasukkan, dimana dibuat agar rekomendasi dibuat berdasarkan judul buku. Similarity_data merupakan DataFrame yang merupakan hasil perhitungan Cosine Similarity, dan items merupakan hasil output yang ingin dikeluarkan yaitu dalam bentuk DataFrame berisi 'ISBN', 'Authors', dan 'Title'. Nilai k merupakan jumlah rekomendasi yang ingin dikeluarkan, dalam hal ini, diatur menjadi 5.</p>
+<p>Dalam fungsi ini, parameter yang perlu diisi hanyalah judul. dan melihat dari similarity_data-nya (sim_df) yang merupakan hasil penghitungan, akan menghasilkan output berupa 'items' antara lain ISBN, Authors, dan Titles.</p>
+</li>
+<li>
+<p><em>Sample Retrieval</em></p>
+<p>Tahap ini cukup mudah dimengerti, yaitu mengambil contoh sampel dari data.</p>
+<p>Tabel 1.0 Sampel Rekomendasi Content Based Filtering Model</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>ISBN</strong></th>
+<th style="text-align:center"><strong>Authors</strong></th>
+<th style="text-align:center"><strong>Titles</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">009181460X</td>
+<td style="text-align:center">Kenton</td>
+<td style="text-align:center">Sleep Deep</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><em>Recommendation Result -- Top-N Recommendations</em></p>
+<p>Menggunakan fungsi book_recommendations() yang sudah dibuat, Penulis menginput satu judul buku, dan hasilnya meng-outputkan 5 rekomendasi buku. Selengkapnya dapat dilihat di bagian Evaluasi.</p>
+<p>Tabel 1.1 Hasil Rekomendasi Top-N Content Based Filtering Model</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>Titles</strong></th>
+<th style="text-align:center"><strong>ISBN</strong></th>
+<th style="text-align:center"><strong>Authors</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">The deep</td>
+<td style="text-align:center">0233967931</td>
+<td style="text-align:center">Peter Benchley</td>
+</tr>
+<tr>
+<td style="text-align:center">House of Sleep</td>
+<td style="text-align:center">0140250832</td>
+<td style="text-align:center">Jonathan Coe</td>
+</tr>
+<tr>
+<td style="text-align:center">The Little Book of Sleep</td>
+<td style="text-align:center">0140280693</td>
+<td style="text-align:center">Paul Wilson</td>
+</tr>
+<tr>
+<td style="text-align:center">Doctor Sleep</td>
+<td style="text-align:center">0151261008</td>
+<td style="text-align:center">Madison Smartt Bell</td>
+</tr>
+<tr>
+<td style="text-align:center">Deep in the Heart</td>
+<td style="text-align:center">0061083267</td>
+<td style="text-align:center">Sharon Sala</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<h2 id="model-development---collaborative-filtering"><em><strong>Model Development -  Collaborative Filtering</strong></em></h2>
+<p>Tahap-tahap yang akan dilakukan Penulis pada Collaborative Filtering adalah sebagai berikut:</p>
+<ol>
+<li>
+<p><em>Model Class Initialization</em></p>
+<p>Terinsipirasi dari Studi Kasus Recommendation System dari Dicoding Academy, Penulis akan menggunakan RecommenderNet dengan Keras Model class. Model ini akan menghitung skor kecocokan antar user dan judul buku dengan teknik embedding, melakukan operasi dot product, dan menambahkan bias untuk setiap user dan judul buku. Pada akhirnya akan menghasilkan skala kecocokan dari 0 hingga 1, dengan Sigmoid Activation Function.</p>
+</li>
+<li>
+<p><em>Callback Functions Initialization</em></p>
+<p>Pada proyek ini, Penulis membuat dua macam callback, antara lain:</p>
+<ul>
+<li>
+<p>lr_reduction, sebuah callback yang mengimplementasikan ReduceLROnPlateau, sebuah callback dari tensorflow yang memiliki parameter sebagai berikut:</p>
+<ol>
+<li>monitor, diatur untuk memonitor 'root_mean_squared_error'</li>
+<li>patience, diatur untuk menunggu 3 epoch sebelum mengurangi learning_rate</li>
+<li>verbose, diatur menjadi 1 untuk transparansi</li>
+<li>factor, diatur menjadi 0.1</li>
+<li>min_lr, diatur untuk tidak mengurangi learning_rate jika sudah menyentuh 0.000001.</li>
+</ol>
+</li>
+<li>
+<p>earlyStop, sebuah callback custom yang dibuat Penulis yang memonitor 'root_mean_squared_error', dan dibuat untuk menghentikan proses training jika sudah menyentuh value RMSE yang diinginkan.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><em>Model Compilation</em></p>
+<p>Pada tahap ini, dilakukan dua proses.</p>
+<ul>
+<li>
+<p>model initialization, yaitu memanggil kelas RecommenderNet(), dengan parameter:</p>
+<ol>
+<li>num_users, dalam kasus ini 8951 users,</li>
+<li>num_books, dalam kasus ini 30.000 buku,</li>
+<li>dan embedding size, dalam kasus ini 50.</li>
+</ol>
+</li>
+<li>
+<p>model compiling, yaitu melakukan model.compile(), dengan parameter sebagai berikut:</p>
+<ol>
+<li>loss, parameter loss function, yang diatur menjadi Binary Crossentropy</li>
+<li>optimizer, parameter optimizer, yang diatur menjadi Adam, dengan learning_rate = 0.001</li>
+<li>metrics, parameter metrik evaluasi, yang diatur menjadi Root Mean Squared Error (RMSE)</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><em>Model Training</em></p>
+<p>Pada model training, Penulis melakukan model.fit(), dan dimasukkan kedalam variabel 'history' untuk mempermudah proses visualisasi metrik.</p>
+<p>Parameter yang dimasukkan pada model.fit() ini antara lain:</p>
+<ul>
+<li>x, yaitu x_train</li>
+<li>y, yaitu y_train</li>
+<li>batch_size, diatur menjadi 8, untuk mempercepat proses training</li>
+<li>epochs, diatur menjadi 40 untuk mempercepat proses training</li>
+<li>verbose, diatur menjadi 1 untuk melihat proses training</li>
+<li>validation_data, yaitu x_val dan y_val</li>
+<li>callbacks, yaitu lr_reduction dan earlyStop yang dibuat sebelumnya</li>
+</ul>
+</li>
+<li>
+<p><em>Sample Retrieval</em></p>
+<p>Sample Retrieval yang dilakukan pada Collaborative Filtering ini merupakan satu user random, kemudian dilakukan ekstraksi buku-buku apa saja yang disukai oleh user tersebut, dan disimpan ke dalam variabel 'rated_books'</p>
+<p>Tabel 2.0 Sampel Rekomendasi Collaborative Filtering Model</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>User-ID</strong></th>
+<th style="text-align:center"><strong>ISBN</strong></th>
+<th style="text-align:center"><strong>Book-Rating</strong></th>
+<th style="text-align:center"><strong>Book-Title</strong></th>
+<th style="text-align:center"><strong>Book-Author</strong></th>
+<th style="text-align:center"><strong>Year-Of-Publication</strong></th>
+<th style="text-align:center"><strong>Publisher</strong></th>
+<th style="text-align:center"><strong>user</strong></th>
+<th style="text-align:center"><strong>books</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">204359</td>
+<td style="text-align:center">0060808365</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">Documents in the Case</td>
+<td style="text-align:center">Dorothy Leigh Sayers</td>
+<td style="text-align:center">1987</td>
+<td style="text-align:center">Harpercollins</td>
+<td style="text-align:center">1074</td>
+<td style="text-align:center">6508</td>
+</tr>
+<tr>
+<td style="text-align:center">204359</td>
+<td style="text-align:center">0299187349</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">The Museum of Happiness: A Novel (Library of A...</td>
+<td style="text-align:center">Jesse Lee Kercheval</td>
+<td style="text-align:center">2003</td>
+<td style="text-align:center">University of Wisconsin Press</td>
+<td style="text-align:center">1074</td>
+<td style="text-align:center">25900</td>
+</tr>
+<tr>
+<td style="text-align:center">204359</td>
+<td style="text-align:center">0025211609</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">Influence</td>
+<td style="text-align:center">Ramsey Campbell</td>
+<td style="text-align:center">1988</td>
+<td style="text-align:center">Simon &amp; Schuster</td>
+<td style="text-align:center">1074</td>
+<td style="text-align:center">1691</td>
+</tr>
+<tr>
+<td style="text-align:center">204359</td>
+<td style="text-align:center">0140062580</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">The Vendor of Sweets (King Penguin S.)</td>
+<td style="text-align:center">R.K. Narayan</td>
+<td style="text-align:center">1983</td>
+<td style="text-align:center">Penguin Books Ltd</td>
+<td style="text-align:center">1074</td>
+<td style="text-align:center">14467</td>
+</tr>
+<tr>
+<td style="text-align:center">204359</td>
+<td style="text-align:center">0140230246</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">Middlemarch</td>
+<td style="text-align:center">George Eliot</td>
+<td style="text-align:center">1994</td>
+<td style="text-align:center">Penguin Books Ltd</td>
+<td style="text-align:center">1074</td>
+<td style="text-align:center">16354</td>
+</tr>
+<tr>
+<td style="text-align:center">204359</td>
+<td style="text-align:center">0060932279</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">Old Man in a Baseball Cap: A Memoir of World W...</td>
+<td style="text-align:center">Fred Rochlin</td>
+<td style="text-align:center">2000</td>
+<td style="text-align:center">Perennial</td>
+<td style="text-align:center">1074</td>
+<td style="text-align:center">7149</td>
+</tr>
+<tr>
+<td style="text-align:center">204359</td>
+<td style="text-align:center">0151002231</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">Homosexuality In History</td>
+<td style="text-align:center">Colin Spencer</td>
+<td style="text-align:center">1996</td>
+<td style="text-align:center">Harcourt</td>
+<td style="text-align:center">1074</td>
+<td style="text-align:center">20403</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><em>Prediction Result -- Top-N Recommendations</em></p>
+<p>Setelah mendapatkan sampel dan data terkait buku-buku yang dimiliki, prediksi dilakukan ke model yang sudah di-train. Hasilnya akan berupa output 10 buku dengan rating terbaik yang belum pernah dirating pembaca (diasumsikan belum pernah dibaca), dengan judul, ISBN, dan penulis buku tersebut. Selengkapnya dapat dilihat di bagian Evaluasi.</p>
+<p>Table 2.1 Hasil Rekomendasi Top-N Collaborative Filtering Model</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>Title</strong></th>
+<th style="text-align:center"><strong>ISBN</strong></th>
+<th style="text-align:center"><strong>Author</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">On Top of the World: Cantor Fitzgerald, Howard Lutnick, &amp; 9/11</td>
+<td style="text-align:center">0060510293</td>
+<td style="text-align:center">Tom Barbash</td>
+</tr>
+<tr>
+<td style="text-align:center">One Flew over the Cuckoo's Nest</td>
+<td style="text-align:center">0140043128</td>
+<td style="text-align:center">Ken Kensey</td>
+</tr>
+<tr>
+<td style="text-align:center">A Glass of Blessings</td>
+<td style="text-align:center">0060805501</td>
+<td style="text-align:center">Barbara Pym</td>
+</tr>
+<tr>
+<td style="text-align:center">To you with love</td>
+<td style="text-align:center">0285622714</td>
+<td style="text-align:center">Terry Rowe</td>
+</tr>
+<tr>
+<td style="text-align:center">Magnificent Prayer</td>
+<td style="text-align:center">0310238447</td>
+<td style="text-align:center">Nick Harrison</td>
+</tr>
+<tr>
+<td style="text-align:center">A Manual for Writers of Term Papers, Theses, and Dissertations (Manual for Writers of Term Papers, Theses, &amp; Dissertations (Paperback))</td>
+<td style="text-align:center">0226816214</td>
+<td style="text-align:center">Kate Turabian</td>
+</tr>
+<tr>
+<td style="text-align:center">Mother Goose Rhymes (Golden Little Look-Look Book)</td>
+<td style="text-align:center">0307117561</td>
+<td style="text-align:center">Golden Books</td>
+</tr>
+<tr>
+<td style="text-align:center">Heart At Work</td>
+<td style="text-align:center">0070116431</td>
+<td style="text-align:center">Jack Canfield</td>
+</tr>
+<tr>
+<td style="text-align:center">The Callender Papers</td>
+<td style="text-align:center">0006729835</td>
+<td style="text-align:center">Cynthia Voight</td>
+</tr>
+<tr>
+<td style="text-align:center">7 Days to a Magickal New You</td>
+<td style="text-align:center">0007123469</td>
+<td style="text-align:center">Fiona Horne</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<hr>
+<p><em><strong>Model Explanation, pros and cons</strong></em></p>
+<p>Pada proyek ini, Penulis menggunakan dua pendekatan algoritma, antara lain Content Based Filtering dan Collaborative Filtering.</p>
+<ol>
+<li>
+<p><strong>Content Based Filtering</strong></p>
+<p>Content Based Filtering adalah model sistem rekomendasi berdasarkan konten, yang merekomendasikan konten (items) yang mirip dengan konten yang telah disukai oleh pengguna di masa lalu. Cara kerja Content Based Filtering adalah dengan melihat konten (items) mana yang telah dinilai, artinya disukai, oleh pengguna. Model kemudian akan menyarankan item yang serupa.</p>
+<p>Kelebihan dari model Content Based Filtering adalah besarnya peluang user untuk menyukai hasil rekomendasi, karena rekomendasi tersebut didasarkan dari items yang sudah disukai oleh pengguna tersebut. Di sisi lain, kekurangan dari model ini ialah kecenderungan untuk kurang dapat memberikan rekomendasi item yang unik.</p>
+</li>
+<li>
+<p><strong>Collaborative Filtering</strong></p>
+<p>Collaborative Filtering adalah model sistem rekomendasi berdasarkan pendapat komunitas pengguna. Dalam konteks proyek ini, model ini bekerja dengan mengidentifikasi buku-buku dengan rating yang tinggi, dan mirip dengan yang dimiliki user.</p>
+<p>Kelebihan dari model Collaborative Filtering ialah kebalikan dari algoritma Content Based Filtering, yaitu kemampuannya dalam merekomendasikan items unik. Namun, kekurangannya juga merupakan kebalikannya, yaitu terdapat peluang user kurang menyukai hasil rekomendasinya, dikarenakan dasar dari rekomendasi model ini bukan hanya items yang telah disukai user, namun pendapat komunitas, dalam hal ini, buku-buku lain dengan rating tinggi.</p>
+</li>
+</ol>
+<h2 id="evaluation"><em><strong>Evaluation</strong></em></h2>
+<p>Dalam proyek ini, beberapa metrik evaluasi yang digunakan adalah sebagai berikut.</p>
+<ol>
+<li><strong>Content Based Filtering</strong></li>
+</ol>
+<p>$$Precision@k = \frac{Rr}{Ra}$$</p>
+<p>dimana,</p>
+<ul>
+<li>Precision@k = presisi dari k-prediksi rekomendasi</li>
+<li>Rr = jumlah rekomendasi relevan</li>
+<li>Ra = jumlah seluruh rekomendasi</li>
+</ul>
+<hr>
+<ol>
+<li><strong>Collaborative Filtering</strong>
+$$RMSE = \sqrt{\sum{(Y_t - Y_p)^2} \over n}$$</li>
+</ol>
+<p>dimana,</p>
+<ul>
+<li>Yt = Y aktual,</li>
+<li>Yp = Y prediksi,</li>
+<li>n = jumlah data</li>
+</ul>
+<hr>
+<p><strong>Model Training Results</strong></p>
+<ul>
+<li><em>Content Based Filtering</em></li>
+</ul>
+<p>Table 3.0 Cuplikan hasil Cosine Similarity Calculation</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>Titles</strong> \ <strong>Titles</strong></th>
+<th style="text-align:center">Where Peachtree Meets Sweet Auburn: A Saga of Race and Family</th>
+<th style="text-align:center">Discover Power Within</th>
+<th style="text-align:center">La Symphonie Pastorale Isabelle</th>
+<th style="text-align:center">Samurai William: The Englishman Who Opened Japan</th>
+<th style="text-align:center">Ian Shoales' Perfect World</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Switch Bitch</td>
+<td style="text-align:center">0.000000</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.000000</td>
+<td style="text-align:center">0.0</td>
+</tr>
+<tr>
+<td style="text-align:center">Man and Superman : A Comedy and a Philosophy</td>
+<td style="text-align:center">0.041173</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.000000</td>
+<td style="text-align:center">0.0</td>
+</tr>
+<tr>
+<td style="text-align:center">The Secret Life of the Seine</td>
+<td style="text-align:center">0.016932</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.023209</td>
+<td style="text-align:center">0.0</td>
+</tr>
+<tr>
+<td style="text-align:center">CORBIE</td>
+<td style="text-align:center">0.000000</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.000000</td>
+<td style="text-align:center">0.0</td>
+</tr>
+<tr>
+<td style="text-align:center">The Stones of the Abbey</td>
+<td style="text-align:center">0.017753</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.024334</td>
+<td style="text-align:center">0.0</td>
+</tr>
+<tr>
+<td style="text-align:center">Madam, Will You Talk?</td>
+<td style="text-align:center">0.000000</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.000000</td>
+<td style="text-align:center">0.0</td>
+</tr>
+<tr>
+<td style="text-align:center">Marie Bonaparte</td>
+<td style="text-align:center">0.000000</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.000000</td>
+<td style="text-align:center">0.0</td>
+</tr>
+<tr>
+<td style="text-align:center">A Return to Love: Relfections on the Principles of a Course in Miracles</td>
+<td style="text-align:center">0.011489</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.007874</td>
+<td style="text-align:center">0.0</td>
+</tr>
+<tr>
+<td style="text-align:center">Crossing Brooklyn Ferry : A Novel</td>
+<td style="text-align:center">0.000000</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.000000</td>
+<td style="text-align:center">0.0</td>
+</tr>
+<tr>
+<td style="text-align:center">The Last Wanderer</td>
+<td style="text-align:center">0.000000</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.014243</td>
+<td style="text-align:center">0.0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><em>Collaborative Filtering</em></li>
+</ul>
+<p>Visualisasi dari hasil training model Collaborative Filtering dapat dicermati di bawah ini.
+<img src="sub2_rs/trainAcc.png?raw=true" alt="Train Acc" title="Train Accuracies Result">
+Gambar 1.0 Hasil Training model Collaborative Filtering</p>
+<p>Dilihat dari gambar 1.0, secara sekilas terlihat bahwa model ini merupakan model overfit, dikarenakan perbedaan besar pada grafik. Namun, jika dicermati lebih lanjut, angka-angka pada epoch terakhir adalah sebagai berikut.</p>
+<ul>
+<li>root_mean_squared_error: 0.1998</li>
+<li>val_root_mean_squared_error: 0.3531</li>
+</ul>
+<p>Ketika dihitung, didapatkan bahwa perbedaan RMSE dan validation RMSE hanya ~0.16, sehingga perbedaannya tidak terlalu signifikan. Alhasil, model Collaborative Filtering ini tidak overfit, melainkan sebuah model good fit.</p>
+<h3 id="prediksi-akhir-dan-diskusi"><em><strong>Prediksi Akhir dan Diskusi</strong></em></h3>
+<hr>
+<p><em><strong>Diskusi Hasil Content Based Filtering</strong></em></p>
+<p>Merujuk pada rumus 'Precision@k', dapat disimpulkan bahwa hasil rekomendasi Content Based Filtering sudah sangat baik, dengan 5/5 (100%) rekomendasi memiliki kata kunci kemiripan dengan buku sampel, antara lain 'Sleep' dan 'Deep'.
+Hasil dari Content Based Filtering ini dikatakan sudah cukup memuaskan untuk menjadi Recommendation System yang efektif bagi user.</p>
+<p><em><strong>Diskusi Hasil Collaborative Filtering</strong></em></p>
+<p>Seperti yang sudah dijelaskan pada bagian Model Training Results, hasil dari training model Collaborative Filtering sudah cukup baik, dengan model yang good fit. Hal ini menjadi indikasi yang baik bahwa model ini sudah bisa menjadi Recommendation System yang efektif.</p>
+<hr>
+<h3 id="hasil-dan-kesimpulan-proyek"><em><strong>Hasil dan Kesimpulan Proyek</strong></em></h3>
+<p>Berdasarkan dari hasil Data Understanding, Data Preparation, Model Development, dan Evaluation, kesimpulan Proyek ini dapat disimpulkan sebagai berikut.</p>
+<ol>
+<li>
+<p>Menjawab Problem Statement 1: Dengan banyaknya jumlah buku dan user yang ada, Recommendation System efektif <strong>dapat dibuat dengan baik.</strong></p>
+</li>
+<li>
+<p>Jalannya proyek ini sudah sesuai dan memuaskan Penulis, dimulai dari menjawab Problem Statement, mencapai Recommendation System Goals yang dirumuskan, serta dapat mengevaluasi performa dengan baik. Alhasil, harapannya proyek ini dapat menjadi sarana bagi sasaran-sasaran yang sudah diuraikan, dan menjadi referensi bagi pelajar-pelajar Machine Learning, terutama pembuat Recommendation System.</p>
+</li>
+</ol>
+<p>.</p>
+<p><em><strong>Referensi</strong></em></p>
+<hr>
+<p>[Dataset] https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset/data</p>
+<p>[1] Badan Pusat Statistika Indonesia. (2023). Diakses dari https://www.bps.go.id/id/statistics-table/2/MTk3NSMy/jumlah-penduduk-pertengahan-tahun--ribu-jiwa-.html</p>
+<p>[2] R. Pramudjasi, Juliansyah, D. Lestari. (2019). Effect of population and education and wages on unemployment in paser regency. Journal of Faculty of Economics and Business Universitas Mulawarman. Diakses dari https://journal.feb.unmul.ac.id/index.php/KINERJA/article/download/5284/472.</p>
+<p>[2] UNESCO Institute of Statistics. Diakses dari https://uis.unesco.org/en/country/id</p>
+<p>[3] Balai Bahasa Provinsi Sumatera Utara, Kemendikbud. (2023). “MANCA” untuk Literasi yang Menyenangkan. Diakses dari https://balaibahasasumut.kemdikbud.go.id/2023/09/07/manca-untuk-literasi-yang-menyenangkan/#:~:text=Dengan%20kata%20lain%2C%20Indonesia%20masuk,2022%20mencapai%2051%2C69%25.</p>
+<p>[4] B. Jepchumba. (2020). Getting started with using Visual Machine Learning Tools for building your Machine Learning Models. Microsoft Community Hub. Diakses dari https://techcommunity.microsoft.com/t5/educator-developer-blog/getting-started-with-using-visual-machine-learning-tools-for/ba-p/3578397.</p>
+<p>[5] Google Machine Learning Developers. Content-based Filtering. Diakses dari https://developers.google.com/machine-learning/recommendation/content-based/basics</p>
+<p>[6] Google Machine Learning Developers. Collaborative Filtering. Diakses dari https://developers.google.com/machine-learning/recommendation/collaborative/basics</p>
+<h2 id="daftar-pustaka"><em><strong>Daftar Pustaka</strong></em></h2>
+<p>[1] Dicoding Academy. Diakses dari https://www.dicoding.com/ .</p>
+
+</body>
+</html>
